@@ -23,7 +23,16 @@ namespace NavBot.Dialogs
             int length = (activity.Text ?? string.Empty).Length;
 
             // return our reply to the user
-            await context.PostAsync($"You sent {activity.Text} which was {length} characters");
+            // await context.PostAsync($"You sent {activity.Text} which was {length} characters");
+
+            if (activity.Text.Contains("docker"))
+            {
+                await context.PostAsync("Hello from docker!");
+                if (activity.Text.Contains("logs"))
+                {
+                    await context.PostAsync("Hello from docker logs!");
+                }
+            }
 
             context.Wait(MessageReceivedAsync);
         }
